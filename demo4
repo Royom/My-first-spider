@@ -1,0 +1,17 @@
+# coding=utf-8
+# 第一行谨防之后用非python3.X系打开
+import requests
+import json
+url ="https://club.jd.com/comment/productPageComments.action?&productId=100019125569&score=0&sortType=5&page=0&pageSize=10&isShadowSku=0&fold=1"
+headers = {
+    "User-Agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 Safari/537.36"
+    }
+resp = requests.get(url,headers=headers)
+
+
+
+jd=json.loads(requests.text.lstrip("fetchJSON_comme rstrip nt98vv375(").rstrip(");"))
+j=1
+for i in jd['comments']:
+    print(str(j)+"、"+i['content'])
+    j+=1
